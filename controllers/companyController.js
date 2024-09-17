@@ -1,5 +1,6 @@
 const Company = require('../models/Company');
 
+// Fetch company details by name
 exports.getCompanyByName = async (req, res, next) => {
   try {
     const company = await Company.findOne({ companyName: req.params.name });
@@ -10,6 +11,7 @@ exports.getCompanyByName = async (req, res, next) => {
   }
 };
 
+// Fetch companies for search suggestions
 exports.getCompaniesForSearch = async (req, res, next) => {
   try {
     const query = req.query.q || '';
@@ -25,6 +27,7 @@ exports.getCompaniesForSearch = async (req, res, next) => {
   }
 };
 
+// Fetch all companies
 exports.getAllCompanies = async (req, res, next) => {
   try {
     const companies = await Company.find({});

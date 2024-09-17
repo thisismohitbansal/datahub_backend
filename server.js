@@ -6,23 +6,26 @@ const cors = require('cors');
 const morgan = require('morgan');
 const companyRoutes = require('./routes/companyRoutes');
 const errorHandler = require('./middlewares/errorHandler');
-const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
+// Middleware
 app.use(helmet());
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
-app.use(errorHandler);
 
+// Routes
 app.use('/api/companies', companyRoutes);
-app.use('/api/users', userRoutes);
+
+// Error handling middleware
+app.use(errorHandler);
 
 app.get('/',(req,res)=>{
     res.send("Hello Mohit Ji!");
 })
 
+// MongoDB connection
 mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => {
     console.log('Connected to MongoDB');
