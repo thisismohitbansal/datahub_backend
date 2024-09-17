@@ -1,7 +1,3 @@
-// utils/db.js
-
-/* Now everything is setup for MongoDb */
-
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
