@@ -7,6 +7,8 @@ const morgan = require('morgan');
 const companyRoutes = require('./routes/companyRoutes');
 const errorHandler = require('./middlewares/errorHandler');
 const userRoutes = require('./routes/userRoutes');
+const helpRoutes = require('./routes/helpRoutes');
+const feedbackRoutes = require('./routes/feedbackRoutes');
 
 const app = express();
 
@@ -18,6 +20,8 @@ app.use(errorHandler);
 
 app.use('/api/companies', companyRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/help', helpRoutes);
+app.use('/api/feedback', feedbackRoutes);
 
 app.get('/',(req,res)=>{
     res.send("Hello Mohit Ji!");
