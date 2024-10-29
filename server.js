@@ -6,7 +6,6 @@ const cors = require('cors');
 const morgan = require('morgan');
 const companyRoutes = require('./routes/companyRoutes');
 const errorHandler = require('./middlewares/errorHandler');
-const userRoutes = require('./routes/userRoutes');
 const helpRoutes = require('./routes/helpRoutes');
 const feedbackRoutes = require('./routes/feedbackRoutes');
 
@@ -25,7 +24,6 @@ app.use('/api/companies', companyRoutes);
 app.use(errorHandler);
 
 app.use('/api/companies', companyRoutes);
-app.use('/api/users', userRoutes);
 app.use('/api/help', helpRoutes);
 app.use('/api/feedback', feedbackRoutes);
 
