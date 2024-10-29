@@ -30,7 +30,7 @@ app.use('/api/help', helpRoutes);
 app.use('/api/feedback', feedbackRoutes);
 
 app.get('/',(req,res)=>{
-    res.send("Hello Mohit Ji!");
+    res.send("Hello Mohit Ji\nAapka swagat hai!");
 })
 
 // MongoDB connection
