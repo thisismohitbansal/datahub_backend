@@ -6,6 +6,7 @@ const cors = require('cors');
 const morgan = require('morgan');
 const companyRoutes = require('./routes/companyRoutes');
 const errorHandler = require('./middlewares/errorHandler');
+const userRoutes = require('./routes/userRoutes');
 
 const app = express();
 
@@ -20,6 +21,9 @@ app.use('/api/companies', companyRoutes);
 
 // Error handling middleware
 app.use(errorHandler);
+
+app.use('/api/companies', companyRoutes);
+app.use('/api/users', userRoutes);
 
 app.get('/',(req,res)=>{
     res.send("Hello Mohit Ji!");
