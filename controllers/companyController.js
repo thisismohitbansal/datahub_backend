@@ -36,3 +36,21 @@ exports.getAllCompanies = async (req, res, next) => {
     next(error);
   }
 };
+
+exports.getSimilarCompanies = async (req, res, next) => {
+  const { companyName } = req.params;
+  try {
+    const company = await Company.findOne({ companyName });
+    if (!company) {
+      return res.status(404).json({ error: "Company not found" });
+    }
+    
+    const similarCompanies = await Company.find({
+      industry: company.industry,
+      companyName: { $ne: companyName }
+    }).limit(6); 
+    res.json(similarCompanies.map((c) => c.companyName));
+  } catch (error) {
+    res.status(500).json({ error: "Error fetching similar companies" });
+  }
+}
